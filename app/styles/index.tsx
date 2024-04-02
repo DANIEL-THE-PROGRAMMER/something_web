@@ -197,3 +197,239 @@ export const Word = styled.span`
   font-weight: 100;
   font-style: normal;
 `;
+
+
+export const TextMarquee = styled.div`
+  --marquee-duration: 20s;
+  font-family: "PPFragment-GlareLight", serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  display: flex;
+  overflow: hidden;
+  font-size: calc(var(--spacer-x4) * 4);
+  text-transform: uppercase;
+  line-height: 1;
+  color: #d2d2cf;
+`;
+
+export const TextMarqueeGroup = styled.div`
+  display: flex;
+  flex-shrink: 0;
+  animation: marqueeScroll var(--marquee-duration) linear infinite;
+
+  &::after {
+    content: "•";
+    padding: 0 0.1em;
+  }
+
+  @keyframes marqueeScroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+`;
+
+export const TextMarqueeItem = styled.div`
+  flex-shrink: 0;
+`;
+
+export const ThemeListing = styled.div`
+  margin-top: var(--spacer-x4);
+
+  @media (min-width: 992px) {
+    padding: 0 var(--spacer-x6);
+  }
+`;
+
+export const ThemeListingItem = styled.div<{ $bgColor?: string }>`
+  display: flex;
+  max-width: 2200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: ${(props) => props.$bgColor || "var(--somewhere-purple)"};
+  color: ${props => props.$bgColor ? "var(--somewhere-navy)" : "var(--somewhere-offwhite)"};
+  @media (min-width: 992px) .themeListings__item {
+    flex-direction: row;
+  }
+
+  &::before {
+    opacity: ${(props) => (props.$bgColor ? "0.23" : "0.5")};
+  }
+`;
+
+export const ThemeImage = styled.div`
+  width: 100%;
+  min-height: 50vmax;
+  position: relative;
+  overflow:hidden;
+  @media (min-width: 992px) {
+    width: 50%;
+    min-height: min((50vw - var(--spacer-x6)) * 1.2, 90vh);
+  }
+
+  & > img {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 125%;
+  }
+`;
+
+export const ThemeContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacer-x2);
+  padding: calc(var(--spacer-x2) * 3) var(--spacer-x4);
+  text-align: center;
+  @media (min-width: 992px) {
+    width: 50%;
+    min-height: min((50vw - var(--spacer-x6)) * 1.2, 90vh);
+  }
+`;
+
+export const ThemeNowBooking = styled.div`
+  font-family: termina, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.625rem;
+  text-align: center;
+`;
+
+export const ThemeingIcon = styled.div`
+  display: inline-block;
+  height: calc(var(--spacer-x2) * 2.5);
+  position:relative;
+
+  & > img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: 100%;
+    vertical-align: middle;
+  }
+`;
+
+export const Themeingh2 = styled.h2`
+  font-size: var(--font-size-2xl);
+  line-height: 1.1;
+  text-transform:uppercase;
+  margin-top: var(--spacer-x2);
+  @media (min-width: 1200px) h2 {
+    font-size: 2rem;
+  }
+`;
+
+export const ThemeingDate = styled.div`
+  font-size: var(--font-size-sm);
+  line-height: 1.75;
+  font-family: termina, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+`;
+
+export const ThemeingH3 = styled.h3`
+  font-family: ivypresto-display, serif;
+  font-weight: 100;
+  font-style: normal;
+  line-height: 1.2;
+  color: var(--bs-heading-color);
+  max-width: 16em;
+`;
+
+export const ThemeingExploreButton = styled.a`
+  --btn-hover-color: var(--somewhere-navy);
+  --btn-hover-bg: var(--somewhere-offwhite);
+  margin-top: calc(var(--spacer-x2) * 0.5);
+  --btn-color: var(--somewhere-offwhite);
+  --btn-bg: var(--somewhere-gold);
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: clamp(44px, 0.8vw + 40.8px, 60px);
+  overflow: hidden;
+  padding: 0 calc(var(--spacer-x3) * 1.5);
+  text-align: center;
+  background: var(--btn-bg);
+  font-family: termina, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 11px;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: calc(100% + 1px);
+    left: 50%;
+    width: 150%;
+    height: 200%;
+    border-radius: 50%;
+    background: var(--btn-hover-bg);
+    transform: translateX(-50%) scale(1);
+    transition: border-radius 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+      transform 0.3s 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+`;
+
+
+
+export const ConnectWithus = styled.div`
+  overflow: hidden;
+  padding-bottom: calc(var(--spacer-x3) * 3);
+  padding-top: calc(var(--spacer-x4) * 4);
+`;
+
+export const ConnectWithUsInner = styled.div`
+  padding-left: var(--spacer-x6);
+  padding-right: var(--spacer-x6);
+  text-align: center;
+`;
+
+export const ConnectWithupDiv = styled.div`
+  padding-left: var(--spacer-x6);
+  padding-right: var(--spacer-x6);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction:column;
+  align-items: center;
+  gap: 0.75rem 1rem;
+`;
+
+export const ConnectH3 = styled.h3`
+  font-family: termina, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.625rem;
+  text-align:center;
+`;
+
+
+export const ConnectSociallinks = styled.div`
+  margin-top: var(--font-size-sm);
+  justify-content: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+
