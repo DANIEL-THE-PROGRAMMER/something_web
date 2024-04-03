@@ -112,7 +112,9 @@ export const HHeading2 = styled.h2`
   color: var(--somewhere-offwhite);
 `;
 
-export const HeadingSpan = styled.span``;
+export const HeadingSpan = styled.span`
+  color: #e9e9e6;
+`;
 export const Whitespace = styled.span`
   font-size: var(--font-size-3xl);
 `;
@@ -431,5 +433,171 @@ export const ConnectSociallinks = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
 `;
+
+
+
+export const Footer = styled.div`
+  padding-top: calc(var(--spacer-x3) * 2);
+  padding-bottom: var(--spacer-x3);
+  padding-left: var(--spacer-x6);
+  padding-right: var(--spacer-x6);
+  background-color: var(--somewhere-navy);
+  color: var(--somewhere-offwhite);
+`;
+
+export const FooterTop = styled.div`
+  --bs-gutter-x: var(--spacer-x2);
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  color: var(--somewhere-offwhite);
+
+  & > *{
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-top: var(--bs-gutter-y);
+  }
+`;
+
+export const FooterTopColOne = styled.div`
+  @media (min-width: 992px){
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+`;
+
+export const FooterTopColTwo = styled.div`
+  @media (min-width: 992px) {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+`;
+
+export const FoterTopColThree = styled.div`
+  @media (min-width: 992px) {
+    flex: 0 0 auto;
+    width: 20.83333333%;
+  }
+`;
+
+export const FoterTopColFour = styled.div`
+  @media (min-width: 992px){
+    flex: 0 0 auto;
+    width: 20.83333333%;
+  }
+`;
+
+export const FooterButton = styled.div`
+  --btn-color: var(--somewhere-offwhite);
+  --btn-bg: transparent;
+  --btn-hover-color: var(--somewhere-navy);
+  --btn-hover-bg: var(--somewhere-offwhite);
+  border: 1px solid var(--btn-color);
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: clamp(44px, 0.8vw + 40.8px, 60px);
+  overflow: hidden;
+  padding: 0 calc(var(--spacer-x3) * 1.5);
+  text-align: center;
+  background: var(--btn-bg);
+  font-family: termina, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 11px;
+  outline: none;
+`;
+
+
+
+export const FooterH2 = styled.div`
+  margin: 0;
+  font-size: 0.625rem;
+  color: var(--somewhere-navy-50);
+  line-height: 1.2;
+`;
+
+
+export const FooterLinks = styled.div`
+  margin-top: calc(var(--spacer-x2) * 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 0.75rem;
+  line-height: 2;
+
+  & > a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--somewhere-offwhite);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  & > a span {
+    display: inline-block;
+  }
+`;
+
+
+export const FooterLogo = styled.div`
+  margin: calc(var(--spacer-x4) * 3) 0 var(--spacer-x2) 0;
+  width:100%;
+`;
+
+export const FooterBtnSecondary = styled.div`
+  margin-top: 1.5em;
+  color: var(--somewhere-offwhite);
+  position: relative;
+  display: inline-block;
+  line-height: 2;
+  font-family: termina, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 11px;
+  text-decoration: none;
+  cursor: pointer;
+`;
+
+
+
+export const FooterBottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em 2em;
+  font-size: 0.625rem;
+`;
+
+export const FooterBottomLinks = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em 2em;
+  font-size: 0.625rem;
+
+  & > a {
+    position: relative;
+    display: inline-block;
+    color: var(--somewhere-navy-50);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+  }
+`;
+
+
+
+
 
 

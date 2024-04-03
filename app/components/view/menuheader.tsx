@@ -12,19 +12,12 @@ import {
   MakeABooking
 } from "@/app/styles";
 import { Logo } from "@/app/icon";
+import { Nav } from "./nav";
 
 export const Menu = () => {
   return (
     <MenuHeader>
-      <div className="menuflex">
-        <MenuBtn>Menu</MenuBtn>
-      </div>
-      <Logo />
-      <div className="menuflex2">
-        <BookBtn>
-          <div>Make a booking</div>
-        </BookBtn>
-      </div>
+      <Nav />
       <MenuHeaderInner>
         <HeaderInner>
           <HHeading1>
