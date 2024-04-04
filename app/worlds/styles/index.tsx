@@ -48,8 +48,8 @@ export const HeroContainer = styled.div`
 export const WordListingContainer = styled.div`
   padding-left: var(--spacer-x6);
   padding-right: var(--spacer-x6);
-  z-index: 2;
-  position: relative;
+  z-index:2;
+  position:relative;
 `;
 
 export const WordListing = styled.div`

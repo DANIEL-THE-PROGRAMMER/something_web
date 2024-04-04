@@ -1,3 +1,4 @@
+
 import {
   Header,
   WordBox,
@@ -17,7 +18,8 @@ import { HeroContainer, HeroMain, H1 } from "./styles";
 import { WordListingContainer, WordListingItem, WordListing } from "./styles";
 import { Gallery } from "../components/section/gallery";
 
-export default function Worlds() {
+
+export default function Worlds ()  {
   return (
     <>
       <Header>
@@ -128,4 +130,4 @@ export default function Worlds() {
       <Gallery />
     </>
   );
-}
+};
