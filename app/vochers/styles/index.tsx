@@ -1,3 +1,7 @@
-export default function Vouchers() {
-  return <></>;
+
+
+export default function Vouchers () {
+    return (
+        <></>
+    )
 }

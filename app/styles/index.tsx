@@ -1,12 +1,14 @@
 "use client";
 
 import { styled } from "styled-components";
+import gsap from "gsap";
+import { useEffect, useLayoutEffect } from "react";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export const MenuHeader = styled.div`
-  position: absolute;
+  position: relative;
   z-index: 500;
-  left: 0;
-  top: 0;
   display: flex;
   align-items: center;
   width: 100%;
@@ -14,7 +16,8 @@ export const MenuHeader = styled.div`
   justify-content: space-between;
 `;
 
-export const MenuBtn = styled.div`
+export const MenuBox = styled.div`
+  cursor: pointer;
   font-family: termina, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -24,12 +27,48 @@ export const MenuBtn = styled.div`
   align-items: center;
   font-size: 11px;
   color: var(--somewhere-offwhite);
+  &:hover div > span:nth-child(1) {
+    transform: translateY(-3px) scaleX(1);
+  }
+  &:hover div > span:nth-child(2) {
+    transform: translateY(3px) scaleX(0.67);
+  }
+`;
+
+export const MenuBtnLabel = styled.div`
+  margin-left: 0.75rem;
+`;
+
+export const MenuBtnIcon = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 1.5rem;
+  height: 1.5rem;
+  & > span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform-origin: left;
+    transition: transform 0.2s ease;
+  }
+  & > span:nth-child(1) {
+    transform: translateY(-3px) scaleX(0.67);
+  }
+
+  & > span:nth-child(2) {
+    transform: translateY(3px) scaleX(1);
+  }
 `;
 
 export const Header = styled.div`
   position: relative;
   z-index: 2;
-  min-height: 100svh;
+  overflow: hidden;
 `;
 
 export const BookBtn = styled.button`
@@ -42,6 +81,7 @@ export const BookBtn = styled.button`
   position: relative;
   display: inline-block;
   line-height: 2;
+  cursor: pointer;
   color: var(--somewhere-offwhite);
   &::after {
     content: "";
@@ -58,21 +98,38 @@ export const BookBtn = styled.button`
   }
 `;
 
+export const HeroContainer = (props: any) => {
+  useEffect(() => {
+    const hero_container = document.querySelector(".hero_container");
+    const parent = hero_container?.parentElement;
+    console.log(parent);
+    gsap.to("hero_container div", {
+      yPercent: 25,
+      ease: "none",
+      scrollTrigger: {
+        trigger: parent,
+        start: "top top",
+        end: "bottom top",
+        scrub: !0,
+      },
+    });
+  }, []);
+
+  return <div className="hero_container">{props.children}</div>;
+};
+
 export const MenuHeaderInner = styled.div`
   padding-top: 5rem;
-  min-height: 100svh;
+  min-height: 100%;
   padding-left: var(--spacer-x6);
   padding-right: var(--spacer-x6);
-  position: absolute;
   z-index: 2;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  padding-top:220px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  height: 100vh;
+  padding-top: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const HeaderInner = styled.div`
@@ -80,7 +137,6 @@ export const HeaderInner = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
 `;
 
 export const HHeading1 = styled.h1`
@@ -96,7 +152,6 @@ export const HHeading1 = styled.h1`
   --line-center: calc((var(--line-total) - 1) / 2);
   color: var(--somewhere-offwhite);
   text-align: center;
-  
 `;
 
 export const HHeading2 = styled.h2`
@@ -120,8 +175,23 @@ export const Whitespace = styled.span`
 `;
 
 export const HeaderTextSplit = (props: any) => {
+  useEffect(() => {
+    let e = gsap.timeline();
+    e.to(".smokeText span", {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      duration: 1.75,
+      ease: "power3.out",
+      stagger: {
+        each: 0.05,
+        from: "random",
+      },
+    });
+  }, []);
+
   return (
-    <span>
+    <span className="smokeText">
       {props.children.split("").map((text: string, index: number) => {
         return <HeadingSpan key={index}>{text}</HeadingSpan>;
       })}
@@ -148,7 +218,6 @@ export const MakeABooking = styled.button`
   margin-top: calc(var(--spacer-x2) * 1.5);
 `;
 
-
 export const WordBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -160,10 +229,10 @@ export const WordBox = styled.div`
 `;
 
 export const WordPara = styled.p`
-  text-align:center;
-  line-height:1.1px;
-  overflow:hidden;
-`
+  text-align: center;
+  line-height: 1.1px;
+  overflow: hidden;
+`;
 
 export const Wordbtn = styled.button`
   margin-top: var(--font-size-2xl);
@@ -187,7 +256,7 @@ export const Wordbtn = styled.button`
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 11px;
-`; 
+`;
 
 export const Word = styled.span`
   --word-percent: calc(var(--word-index) / var(--word-total));
@@ -198,8 +267,42 @@ export const Word = styled.span`
   font-family: ivypresto-display, serif;
   font-weight: 100;
   font-style: normal;
+  display: inline-block;
 `;
 
+export const WordText = (props: any, index: number) => {
+
+  useLayoutEffect(() => {
+    const parent = document.querySelectorAll(".wordtext");
+    const element = document.querySelectorAll(".wordtext span");
+    gsap.from(element, {
+      yPercent: 100,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+    });
+  })
+
+  useEffect(() => {
+    const parent = document.querySelectorAll(".wordtext");
+    const element = document.querySelectorAll(".wordtext span")
+    gsap.to(element, {
+      yPercent: 0,
+      duration: 0.8,
+      ease: "power2.inOut",
+      delay: function () {
+        return 0.2 * index;
+      },
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 110%, 0% 110%)",
+      scrollTrigger: parent,
+    });
+
+  },[])
+
+  return (
+    <span className="wordtext" style={{ display: "inline-block", position:'relative', overflow:"hidden" }}>
+      <Word>{props.children}</Word>
+    </span>
+  );
+};
 
 export const TextMarquee = styled.div`
   --marquee-duration: 20s;
@@ -252,7 +355,8 @@ export const ThemeListingItem = styled.div<{ $bgColor?: string }>`
   margin-left: auto;
   margin-right: auto;
   background-color: ${(props) => props.$bgColor || "var(--somewhere-purple)"};
-  color: ${props => props.$bgColor ? "var(--somewhere-navy)" : "var(--somewhere-offwhite)"};
+  color: ${(props) =>
+    props.$bgColor ? "var(--somewhere-navy)" : "var(--somewhere-offwhite)"};
   @media (min-width: 992px) .themeListings__item {
     flex-direction: row;
   }
@@ -266,7 +370,7 @@ export const ThemeImage = styled.div`
   width: 100%;
   min-height: 50vmax;
   position: relative;
-  overflow:hidden;
+  overflow: hidden;
   @media (min-width: 992px) {
     width: 50%;
     min-height: min((50vw - var(--spacer-x6)) * 1.2, 90vh);
@@ -312,7 +416,7 @@ export const ThemeNowBooking = styled.div`
 export const ThemeingIcon = styled.div`
   display: inline-block;
   height: calc(var(--spacer-x2) * 2.5);
-  position:relative;
+  position: relative;
 
   & > img {
     display: block;
@@ -326,7 +430,7 @@ export const ThemeingIcon = styled.div`
 export const Themeingh2 = styled.h2`
   font-size: var(--font-size-2xl);
   line-height: 1.1;
-  text-transform:uppercase;
+  text-transform: uppercase;
   margin-top: var(--spacer-x2);
   @media (min-width: 1200px) h2 {
     font-size: 2rem;
@@ -391,8 +495,6 @@ export const ThemeingExploreButton = styled.a`
   }
 `;
 
-
-
 export const ConnectWithus = styled.div`
   overflow: hidden;
   padding-bottom: calc(var(--spacer-x3) * 3);
@@ -410,7 +512,7 @@ export const ConnectWithupDiv = styled.div`
   padding-right: var(--spacer-x6);
   display: flex;
   flex-wrap: wrap;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   gap: 0.75rem 1rem;
 `;
@@ -422,9 +524,8 @@ export const ConnectH3 = styled.h3`
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 0.625rem;
-  text-align:center;
+  text-align: center;
 `;
-
 
 export const ConnectSociallinks = styled.div`
   margin-top: var(--font-size-sm);
@@ -433,8 +534,6 @@ export const ConnectSociallinks = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
 `;
-
-
 
 export const Footer = styled.div`
   padding-top: calc(var(--spacer-x3) * 2);
@@ -455,7 +554,7 @@ export const FooterTop = styled.div`
   margin-left: calc(-0.5 * var(--bs-gutter-x));
   color: var(--somewhere-offwhite);
 
-  & > *{
+  & > * {
     max-width: 100%;
     padding-right: calc(var(--bs-gutter-x) * 0.5);
     padding-left: calc(var(--bs-gutter-x) * 0.5);
@@ -464,7 +563,7 @@ export const FooterTop = styled.div`
 `;
 
 export const FooterTopColOne = styled.div`
-  @media (min-width: 992px){
+  @media (min-width: 992px) {
     flex: 0 0 auto;
     width: 33.33333333%;
   }
@@ -485,7 +584,7 @@ export const FoterTopColThree = styled.div`
 `;
 
 export const FoterTopColFour = styled.div`
-  @media (min-width: 992px){
+  @media (min-width: 992px) {
     flex: 0 0 auto;
     width: 20.83333333%;
   }
@@ -516,15 +615,12 @@ export const FooterButton = styled.div`
   outline: none;
 `;
 
-
-
 export const FooterH2 = styled.div`
   margin: 0;
   font-size: 0.625rem;
   color: var(--somewhere-navy-50);
   line-height: 1.2;
 `;
-
 
 export const FooterLinks = styled.div`
   margin-top: calc(var(--spacer-x2) * 0.5);
@@ -549,10 +645,9 @@ export const FooterLinks = styled.div`
   }
 `;
 
-
 export const FooterLogo = styled.div`
   margin: calc(var(--spacer-x4) * 3) 0 var(--spacer-x2) 0;
-  width:100%;
+  width: 100%;
 `;
 
 export const FooterBtnSecondary = styled.div`
@@ -570,8 +665,6 @@ export const FooterBtnSecondary = styled.div`
   text-decoration: none;
   cursor: pointer;
 `;
-
-
 
 export const FooterBottom = styled.div`
   display: flex;
@@ -595,9 +688,3 @@ export const FooterBottomLinks = styled.div`
     text-decoration: none;
   }
 `;
-
-
-
-
-
-
