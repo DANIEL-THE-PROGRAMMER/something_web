@@ -4,6 +4,8 @@ import "./globals.css";
 import StyledComponentsRegistry from "./lib/registry";
 import { Footer } from "./components/view/footer";
 import { NavMenu, BookMenu } from "./components/nav_bookmenu";
+import { Nav } from "./components/view/nav";
+import { SmoothScrollbar } from "./components/smoothscrollbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StyledComponentsRegistry>
-          
-          {children}
-          <Footer />
-        </StyledComponentsRegistry>
+        <SmoothScrollbar>
+          <StyledComponentsRegistry>
+            <Nav />
+            {children}
+            <Footer />
+          </StyledComponentsRegistry>
+        </SmoothScrollbar>
       </body>
     </html>
   );

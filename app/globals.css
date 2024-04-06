@@ -17,6 +17,17 @@ a {
   text-decoration: none;
 }
 
+.smokeText{
+  
+}
+
+.smokeText span{
+  opacity: 0;
+  scale: 3;
+  filter: blur(20px);
+  transform-origin: 50% 50%;
+  display: inline-block;
+}
 
 button{
   padding: 0;
@@ -33,4 +44,25 @@ button{
 
 .menuflex2{
   justify-content: flex-end;
+}
+
+.pr_ft_container{
+  display: flex; 
+  flex:1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navmenucontainer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  z-index: 10;
+  padding: 1.5rem clamp(16px, 2.4vw + 6.4px, 64px);
+}
+.hero_container{
+  position: relative;
+  z-index: 2;
 }
