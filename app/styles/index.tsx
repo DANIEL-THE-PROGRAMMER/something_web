@@ -2,9 +2,10 @@
 
 import { styled } from "styled-components";
 import gsap from "gsap";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export const MenuHeader = styled.div`
   position: relative;
@@ -282,7 +283,7 @@ export const WordText = (props: any, index: number) => {
   })
 
   useEffect(() => {
-    const parent = document.querySelectorAll(".wordtext");
+    const parent = document.querySelector(".wordtext");
     const element = document.querySelectorAll(".wordtext span")
     gsap.to(element, {
       yPercent: 0,
@@ -365,6 +366,33 @@ export const ThemeListingItem = styled.div<{ $bgColor?: string }>`
     opacity: ${(props) => (props.$bgColor ? "0.23" : "0.5")};
   }
 `;
+
+
+export const ParallaxImage = (props: any) => {
+
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useGSAP(() => {
+    if(ref.current){
+      gsap.to(ref.current.firstChild, {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: !0,
+        },
+      });
+    }
+  })
+
+  return (
+    <ThemeImage ref={ref}>
+      {props.children}
+    </ThemeImage>
+  )
+}
 
 export const ThemeImage = styled.div`
   width: 100%;

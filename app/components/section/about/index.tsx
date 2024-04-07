@@ -1,6 +1,5 @@
 import { Whitespace } from "@/app/styles";
 import {
-  MediaFill,
   H3,
   H2,
   AboutContanerInnerColumnTwo,
@@ -12,6 +11,7 @@ import {
   Col3,
   RichText,
   Col3MediaFill,
+  MediaFill,
   RowCol1,
   AboutContanerInnerRow2,
   ConnectBlock,
@@ -19,8 +19,13 @@ import {
   ConnectH2,
   SocialLinks,
   ConnectH6,
+  Word,
+  ParallaxImageMedia,
+  ParallaxImageMediaCol,
+  ParallaxImageConnectBlock,
 } from "./style";
 import Image from "next/image";
+import { StaggeredWrapper } from "../../wrapper";
 
 export const About = () => {
   return (
@@ -29,40 +34,44 @@ export const About = () => {
         <AboutContanerInner>
           <AboutContanerInnerRow>
             <AboutContanerInnerColumnOne>
-              <H2>About somewhere</H2>
+              <StaggeredWrapper>
+                <H2>About somewhere</H2>
+              </StaggeredWrapper>
               <H3>
                 <p>
-                  <span>Explore</span>
+                  <Word index="0">
+                    <span>Explore</span>
+                  </Word>
                   <Whitespace> </Whitespace>
-                  <span>new</span>
+                  <Word index="0">new</Word>
                   <Whitespace> </Whitespace>
-                  <span>worlds</span>
+                  <Word index="0">worlds</Word>
                   <Whitespace> </Whitespace>
                 </p>
                 <p>
-                  <span>Escape</span>
+                  <Word index="1">Escape</Word>
                   <Whitespace> </Whitespace>
-                  <span>reality.</span>
+                  <Word index="1">reality.</Word>
                 </p>
                 <p>
-                  <span>Encounter</span>
+                  <Word index="2">Encounter</Word>
                   <Whitespace> </Whitespace>
-                  <span>a</span>
+                  <Word index="2">a</Word>
                   <Whitespace> </Whitespace>
-                  <span>cocktail</span>
+                  <Word index="2">cocktail</Word>
                   <Whitespace> </Whitespace>
-                  <span>bar</span>
+                  <Word index="2">bar</Word>
                   <Whitespace> </Whitespace>
-                  <span>like</span>
+                  <Word index="3">like</Word>
                   <Whitespace> </Whitespace>
-                  <span>no</span>
+                  <Word index="3">no</Word>
                   <Whitespace> </Whitespace>
-                  <span>other.</span>
+                  <Word index="3">other.</Word>
                 </p>
               </H3>
             </AboutContanerInnerColumnOne>
             <AboutContanerInnerColumnTwo>
-              <MediaFill>
+              <ParallaxImageMedia>
                 <Image
                   src="/assets/Somewhere-about-4.jpg"
                   alt=""
@@ -70,12 +79,12 @@ export const About = () => {
                   height={0}
                   sizes="100vw"
                 />
-              </MediaFill>
+              </ParallaxImageMedia>
             </AboutContanerInnerColumnTwo>
           </AboutContanerInnerRow>
           <AboutContanerInnerRow2>
             <RowCol1>
-              <MediaFill>
+              <ParallaxImageMedia>
                 <Image
                   src="/assets/Somewhere-about-5.jpg"
                   alt=""
@@ -83,7 +92,7 @@ export const About = () => {
                   height={0}
                   sizes="100vw"
                 />
-              </MediaFill>
+              </ParallaxImageMedia>
             </RowCol1>
             <Col2>
               <RichText>
@@ -107,7 +116,7 @@ export const About = () => {
               </RichText>
             </Col2>
             <Col3>
-              <Col3MediaFill>
+              <ParallaxImageMediaCol>
                 <Image
                   src="/assets/somewhere-gallery-7.jpg"
                   alt=""
@@ -115,13 +124,13 @@ export const About = () => {
                   height={0}
                   sizes="100vw"
                 />
-              </Col3MediaFill>
+              </ParallaxImageMediaCol>
             </Col3>
           </AboutContanerInnerRow2>
         </AboutContanerInner>
       </AboutContaner>
       <ConnectBlock>
-        <ConnectBlockContainer>
+        <ParallaxImageConnectBlock>
           <Image
             src="/assets/connect2.jpg"
             alt=""
@@ -129,10 +138,15 @@ export const About = () => {
             height={0}
             sizes="100vw"
           />
-          <ConnectH6>@somewherebynico</ConnectH6>
-          <ConnectH2>Connect with us</ConnectH2>
+          <StaggeredWrapper>
+            <ConnectH6>@somewherebynico</ConnectH6>
+          </StaggeredWrapper>
+          <StaggeredWrapper>
+            <ConnectH2>Connect with us</ConnectH2>
+          </StaggeredWrapper>
+
           <SocialLinks></SocialLinks>
-        </ConnectBlockContainer>
+        </ParallaxImageConnectBlock>
       </ConnectBlock>
     </>
   );

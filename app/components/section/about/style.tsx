@@ -1,6 +1,13 @@
 "use client";
 
 import styled from "styled-components";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
+import { ParallaxImage } from "@/app/styles";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export const AboutContaner = styled.div`
   padding-top: calc(var(--spacer-x4) * 4);
@@ -59,7 +66,7 @@ export const H2 = styled.h2`
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 0.625rem;
-  z-index:10;
+  z-index: 10;
 `;
 
 export const H3 = styled.h3`
@@ -78,6 +85,57 @@ export const H3 = styled.h3`
     line-height: 1.1;
   }
 `;
+
+export const Word = (props: any, index: string) => {
+  const ref = useRef<HTMLSpanElement | null>(null);
+
+  const number = parseInt(index);
+  useGSAP(() => {
+    gsap.set(ref.current, {
+      yPercent: 100,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+    });
+
+    gsap.to(ref.current, {
+      yPercent: 0,
+      duration: 0.8,
+      ease: "power2.inOut",
+      delay: function () {
+        return 0.2 * number;
+      },
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 110%, 0% 110%)",
+      scrollTrigger: ref.current?.parentElement?.parentElement,
+    });
+  });
+
+
+  return (
+    <span ref={ref} style={{ display: "inline-block" }}>
+      {props.children}
+    </span>
+  );
+};
+
+export const ParallaxImageMedia = (props: any) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    if (ref.current) {
+      gsap.to(ref.current.firstChild, {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: !0,
+        },
+      });
+    }
+  });
+
+  return <MediaFill ref={ref}>{props.children}</MediaFill>;
+};
 
 export const MediaFill = styled.div`
   position: relative;
@@ -136,6 +194,28 @@ export const RichText = styled.div`
   }
 `;
 
+
+export const ParallaxImageMediaCol = (props: any) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    if (ref.current) {
+      gsap.to(ref.current.firstChild, {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: !0,
+        },
+      });
+    }
+  });
+
+  return <Col3MediaFill ref={ref}>{props.children}</Col3MediaFill>;
+};
+
 export const Col3MediaFill = styled.div`
   @media (min-width: 992px) {
     transform: translateY(50%);
@@ -168,6 +248,28 @@ export const ConnectBlock = styled.div`
   }
   color: var(--somewhere-white);
 `;
+
+
+export const ParallaxImageConnectBlock = (props: any) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    if (ref.current) {
+      gsap.to(ref.current.firstChild, {
+        yPercent: -20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: !0,
+        },
+      });
+    }
+  });
+
+  return <ConnectBlockContainer ref={ref}>{props.children}</ConnectBlockContainer>;
+};
 
 export const ConnectBlockContainer = styled.div`
   @media (min-width: 992px) {
@@ -221,7 +323,6 @@ export const SocialLinks = styled.div`
   flex-wrap: wrap;
 `;
 
-
 export const ConnectH6 = styled(H2)`
-  color:white;
+  color: white;
 `;

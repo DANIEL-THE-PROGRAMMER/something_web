@@ -1,13 +1,30 @@
-import { EscapeButton, EscapeContainerOuter, Escapeh2 } from "./styles"
+import {
+  EscapeButton,
+  EscapeContainerOuter,
+  Escapeh2,
+  HomeEscapeHeading,
+  EscapeParallaxImage
+} from "./styles";
 import Image from "next/image"
+import { StaggeredWrapper } from "../../wrapper";
 
 
 export const Escape = () => {
     return (
-        <EscapeContainerOuter>
-            <Image src="/assets/escape-hero-image.jpg" alt="" width={0} height={0} sizes="100vww" />
-            <Escapeh2>Escape</Escapeh2>
+      <div className="homeEscape">
+        <EscapeParallaxImage>
+          <Image
+            src="/assets/escape-hero-image.jpg"
+            alt=""
+            width={0}
+            height={0}
+            sizes="100vww"
+          />
+          <HomeEscapeHeading>Escape</HomeEscapeHeading>
+          <StaggeredWrapper>
             <EscapeButton>Treat someone</EscapeButton>
-        </EscapeContainerOuter>
-    )
+          </StaggeredWrapper>
+        </EscapeParallaxImage>
+      </div>
+    );
 }

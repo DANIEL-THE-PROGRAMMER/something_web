@@ -23,8 +23,11 @@ import {
   ConnectH3,
   ConnectSociallinks,
   WordText,
+  ParallaxImage,
+
 } from "@/app/styles";
 import Image from "next/image";
+import { StaggeredWrapper } from "../wrapper";
 
 export const Welcome = () => {
   return (
@@ -59,7 +62,9 @@ export const Welcome = () => {
           <Whitespace> </Whitespace>
           <WordText index={2}>extraordinary.</WordText>
         </WordPara>
-        <Wordbtn>Book Now</Wordbtn>
+        <StaggeredWrapper>
+          <Wordbtn>Book Now</Wordbtn>
+        </StaggeredWrapper>
       </WordBox>
       <TextMarquee>
         <TextMarqueeGroup>
@@ -74,7 +79,7 @@ export const Welcome = () => {
       </TextMarquee>
       <ThemeListing>
         <ThemeListingItem>
-          <ThemeImage>
+          <ParallaxImage>
             <Image
               src="/assets/LOZ_Hero-image.jpg"
               alt=""
@@ -82,60 +87,84 @@ export const Welcome = () => {
               height={0}
               sizes="100vw"
             />
-          </ThemeImage>
+          </ParallaxImage>
           <ThemeContent>
-            <ThemeNowBooking>New Booking</ThemeNowBooking>
-            <ThemeingIcon>
-              <Image
-                src="/assets/landofoz-icon.svg"
-                alt=""
-                width={0}
-                height={0}
-                sizes="100vw"
-              />
-            </ThemeingIcon>
-            <Themeingh2>Land of oz</Themeingh2>
-            <ThemeingDate>
-              <div>GLASGOW</div>
-              <div>20TH MARCH {"-"} 28TH APRIL 2024</div>
-            </ThemeingDate>
-            <ThemeingH3>
-              “Click your heels, open your eyes and find yourself in the
-              technicolour land of Oz—a dreamworld of magic, mystery and
-              adventure.”
-            </ThemeingH3>
-            <ThemeingExploreButton>
-              <span>Explore</span>
-            </ThemeingExploreButton>
+            <StaggeredWrapper>
+              <ThemeNowBooking>New Booking</ThemeNowBooking>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <ThemeingIcon>
+                <Image
+                  src="/assets/landofoz-icon.svg"
+                  alt=""
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                />
+              </ThemeingIcon>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <Themeingh2>Land of oz</Themeingh2>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <ThemeingDate>
+                <div>GLASGOW</div>
+                <div>20TH MARCH {"-"} 28TH APRIL 2024</div>
+              </ThemeingDate>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <ThemeingH3>
+                “Click your heels, open your eyes and find yourself in the
+                technicolour land of Oz—a dreamworld of magic, mystery and
+                adventure.”
+              </ThemeingH3>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <ThemeingExploreButton>
+                <span>Explore</span>
+              </ThemeingExploreButton>
+            </StaggeredWrapper>
           </ThemeContent>
         </ThemeListingItem>
         <ThemeListingItem $bgColor="#f3bdbd">
           <ThemeContent>
-            <ThemeNowBooking>coming soon</ThemeNowBooking>
-            <ThemeingIcon>
-              <Image
-                src="/assets/nostalgia-icon-dark.svg"
-                alt=""
-                width={0}
-                height={0}
-                sizes="100vw"
-              />
-            </ThemeingIcon>
-            <Themeingh2>Next Menu</Themeingh2>
-            <ThemeingDate>
-              <div>GLASGOW</div>
-              <div>1TH MARCH {"-"} 9TH June 2024</div>
-            </ThemeingDate>
-            <ThemeingH3>
-              “Click your heels, open your eyes and find yourself in the
-              technicolour land of Oz—a dreamworld of magic, mystery and
-              adventure.”
-            </ThemeingH3>
-            <ThemeingExploreButton>
-              <span>Explore</span>
-            </ThemeingExploreButton>
+            <StaggeredWrapper>
+              <ThemeNowBooking>coming soon</ThemeNowBooking>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <ThemeingIcon>
+                <Image
+                  src="/assets/nostalgia-icon-dark.svg"
+                  alt=""
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                />
+              </ThemeingIcon>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <Themeingh2>Next Menu</Themeingh2>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <ThemeingDate>
+                <div>GLASGOW</div>
+                <div>1TH MARCH {"-"} 9TH June 2024</div>
+              </ThemeingDate>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <ThemeingH3>
+                “Click your heels, open your eyes and find yourself in the
+                technicolour land of Oz—a dreamworld of magic, mystery and
+                adventure.”
+              </ThemeingH3>
+            </StaggeredWrapper>
+            <StaggeredWrapper>
+              <ThemeingExploreButton>
+                <span>Explore</span>
+              </ThemeingExploreButton>
+            </StaggeredWrapper>
           </ThemeContent>
-          <ThemeImage>
+          <ParallaxImage>
             <Image
               src="/assets/NOSTALGIA_DEF_RGB.jpg"
               alt=""
@@ -143,7 +172,7 @@ export const Welcome = () => {
               height={0}
               sizes="100vw"
             />
-          </ThemeImage>
+          </ParallaxImage>
         </ThemeListingItem>
       </ThemeListing>
       <ConnectWithus>
