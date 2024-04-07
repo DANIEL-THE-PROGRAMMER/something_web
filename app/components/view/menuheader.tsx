@@ -1,23 +1,20 @@
 import {
   MenuHeader,
-  MenuBtn,
-  BookBtn,
   MenuHeaderInner,
   HeaderInner,
   HHeading1,
   HHeading2,
   HeaderTextSplit,
-  HeadingSpan,
   Whitespace,
   MakeABooking
 } from "@/app/styles";
 import { Logo } from "@/app/icon";
 import { Nav } from "./nav";
+import { HeroContainer } from "@/app/styles";
 
 export const Menu = () => {
   return (
-    <MenuHeader>
-      <Nav />
+    <HeroContainer>
       <MenuHeaderInner>
         <HeaderInner>
           <HHeading1>
@@ -37,6 +34,6 @@ export const Menu = () => {
         <HHeading2>WHICH ONE WILL YOU EXPLORE?</HHeading2>
         <MakeABooking>MAKE A BOOKING</MakeABooking>
       </MenuHeaderInner>
-    </MenuHeader>
+    </HeroContainer>
   );
 };
