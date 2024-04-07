@@ -1,31 +1,32 @@
 "use client";
 
-import styled from "styled-components";
+import styled, {  css } from "styled-components";
 
-export const NavMenuBox = styled.div`
+export const NavMenuBox = styled.div<{ $open: boolean }>`
   position: fixed;
-  z-index: 2000;
+  z-index: ${(props) => (props.$open ? "2000" : "-2000")};
   left: 0;
   top: 0;
   display: flex;
   width: 100%;
   height: 100%;
-  opacity: 1;
+  opacity: ${(props) => (props.$open ? "1" : "0")};
 `;
 
-export const NavMenu_Overlay = styled.div`
+export const NavMenu_Overlay = styled.div<{ $open: boolean }>`
   position: fixed;
-  z-index: 1;
+  z-index: ${(props) => (props.$open ? "1" : "-1")};
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background: rgba(25, 28, 34, 0.95);
-  opacity: 1;
+  opacity: ${(props) => (props.$open ? "1" : "0")};
+  transition: opacity 0.8s;
 `;
 
-export const NavMenuContainer = styled.div`
-  transform: translateX(0%);
+export const NavMenuContainer = styled.div<{ $open: boolean }>`
+  transform:translateX(${props => props.$open ? "0%" : "-100%"}) ;
   transition: transform 0.5s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
   @media (min-width: 768px) {
     text-align: left;
@@ -52,7 +53,6 @@ export const NavMenuPrimary = styled.div`
   z-index: 10;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   gap: calc(var(--spacer-x2) * 3);
   width: 100%;
@@ -249,7 +249,7 @@ export const NavMenuFooterCenter = styled.div`
   }
 `;
 
-export const NavMenuSecondary = styled.div`
+export const NavMenuSecondary = styled.div<{ $active: boolean }>`
   position: absolute;
   z-index: 1;
   left: 100%;
@@ -257,6 +257,8 @@ export const NavMenuSecondary = styled.div`
   padding-left: var(--spacer-x4);
   padding-right: var(--spacer-x4);
   width: min(30rem, 81.8181818182%);
+  transform: ${(props) =>
+    props.$active ? "translateX(0%)" : "translateX(-100%)"};
   transition: transform 0.5s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
   padding-top: calc(5rem + var(--spacer-x4));
   padding-bottom: var(--spacer-x4);
@@ -275,7 +277,6 @@ export const NavMenuSecondaryNav = styled.div`
   align-items: flex-start;
   gap: var(--spacer-x2);
   font-size: 0.75rem;
-  transform: translateX(0);
   padding-bottom: var(--spacer-x4);
   min-height: 100%;
   overflow-y: auto;
@@ -297,12 +298,12 @@ export const NavMenuSecondaryNav = styled.div`
   }
 `;
 
-export const BookingMenu = styled.div`
-  opacity: 1;
+export const BookingMenu = styled.div<{ $open: boolean }>`
+  opacity: ${(props) => (props.$open ? "1" : "0")};
   visibility: visible;
   pointer-events: auto;
   transition: opacity 0s, visibility 0s;
-  z-index: 3000;
+  z-index: ${(props) => (props.$open ? "3000" : "-3000")};
   justify-content: flex-end;
   position: fixed;
   left: 0;
@@ -312,19 +313,19 @@ export const BookingMenu = styled.div`
   height: 100%;
 `;
 
-export const BookMenuOverlay = styled.div`
+export const BookMenuOverlay = styled.div<{$open: boolean}>`
   position: fixed;
-  z-index: 1;
+  z-index: ${(props) => (props.$open ? "1" : "-1")};
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background: rgba(25, 28, 34, 0.95);
-  opacity: 1;
+  opacity: ${(props) => (props.$open ? "1" : "0")};
   transition: opacity 0.8s;
 `;
-export const BookMenuContainer = styled.div`
-  transform: translateX(0%);
+export const BookMenuContainer = styled.div<{ $open: boolean }>`
+  transform: ${(props) => (props.$open ? "translateX(0%)" : "translateX(100%)")};
   transition: transform 0.5s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
   @media (min-width: 768px) {
     padding: calc(5rem + var(--spacer-x4)) var(--spacer-x4) var(--spacer-x4)
@@ -431,5 +432,3 @@ export const BookingBtn = styled.a`
     --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
   }
 `;
-
-

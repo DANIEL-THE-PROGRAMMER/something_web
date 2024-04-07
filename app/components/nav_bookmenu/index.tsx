@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import {
   NavMenuBox,
   NavMenu_Overlay,
@@ -25,49 +28,89 @@ import {
   BookMenuListingBody,
   BookingBtn,
 } from "./style";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export const NavMenu = () => {
+export const NavMenu = ({
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}) => {
+  const [active, setActive] = useState<null | number>(null);
+
+  const Links: { href: string; name: string }[] = [
+    {
+      href: "worlds",
+      name: "Our worlds",
+    },
+    {
+      href: "booking",
+      name: "Booking",
+    },
+    {
+      href: "vochers",
+      name: "Gift vouchers",
+    },
+  ];
+
   return (
     <>
-      <NavMenuBox>
-        <NavMenu_Overlay></NavMenu_Overlay>
-        <NavMenuContainer>
+      <NavMenuBox $open={open}>
+        <NavMenu_Overlay $open={open}></NavMenu_Overlay>
+        <NavMenuContainer $open={open}>
           <NavMenuPrimary>
-            <NavMenuClose>
-              <NavMenuCloseIcon>
-                <span></span>
-                <span></span>
-              </NavMenuCloseIcon>
-              <NavMenuCloseLabel>Close</NavMenuCloseLabel>
-            </NavMenuClose>
-            <NavMenuPrimaryNav>
-              <a>our worlds</a>
-              <a>Booking</a>
-              <a>Gift Vouchers</a>
-            </NavMenuPrimaryNav>
-            <NavMenuFooter>
-              <div>
-                <NavMenuFooterHeading>Contact</NavMenuFooterHeading>
-                <NavMenuFooterLinks>
-                  info@somewherebynico.co.uk
-                </NavMenuFooterLinks>
-              </div>
-              <div>
-                <NavMenuFooterHeading>Find us</NavMenuFooterHeading>
-                <NavMenuFooterLinks></NavMenuFooterLinks>
-              </div>
-              <div>
-                <NavMenuFooterSocialLinks></NavMenuFooterSocialLinks>
-              </div>
-              <div>
-                <NavMenuFooterCenter>
-                  <a>We{"'"}re hiring</a>
-                </NavMenuFooterCenter>
-              </div>
-              <div></div>
-            </NavMenuFooter>
+            <span onClick={() => setOpen(false)}>
+              <NavMenuClose>
+                <NavMenuCloseIcon>
+                  <span></span>
+                  <span></span>
+                </NavMenuCloseIcon>
+                <NavMenuCloseLabel>Close</NavMenuCloseLabel>
+              </NavMenuClose>
+            </span>
+            <div className="pr_ft_container">
+              <NavMenuPrimaryNav>
+                {Links.map(
+                  (link: { href: string; name: string }, index: number) => {
+                    return (
+                      <Link
+                        key={index}
+                        href={`/${link.href}`}
+                        onMouseEnter={() => setActive(index)}
+                        onMouseLeave={() => setActive(null)}
+                      >
+                        <span>{link.name}</span>
+                      </Link>
+                    );
+                  }
+                )}
+              </NavMenuPrimaryNav>
+              <NavMenuFooter>
+                <div>
+                  <NavMenuFooterHeading>Contact</NavMenuFooterHeading>
+                  <NavMenuFooterLinks>
+                    info@somewherebynico.co.uk
+                  </NavMenuFooterLinks>
+                </div>
+                <div>
+                  <NavMenuFooterHeading>Find us</NavMenuFooterHeading>
+                  <NavMenuFooterLinks></NavMenuFooterLinks>
+                </div>
+                <div>
+                  <NavMenuFooterSocialLinks></NavMenuFooterSocialLinks>
+                </div>
+                <div>
+                  <NavMenuFooterCenter>
+                    <a>We{"'"}re hiring</a>
+                  </NavMenuFooterCenter>
+                </div>
+                <div></div>
+              </NavMenuFooter>
+            </div>
           </NavMenuPrimary>
-          <NavMenuSecondary>
+
+          <NavMenuSecondary $active={active === 0}>
             <NavMenuSecondaryNav>
               <a>
                 <span>land of oz</span>
@@ -82,7 +125,7 @@ export const NavMenu = () => {
               </a>
             </NavMenuSecondaryNav>
           </NavMenuSecondary>
-          <NavMenuSecondary>
+          <NavMenuSecondary $active={active === 1}>
             <NavMenuSecondaryNav>
               <a>
                 <span>land of oz</span>
@@ -96,22 +139,36 @@ export const NavMenu = () => {
   );
 };
 
-export const BookMenu = () => {
+export const BookMenu = ({
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}) => {
   return (
-    <BookingMenu>
-      <BookMenuOverlay></BookMenuOverlay>
-      <BookMenuContainer>
-        <NavMenuClose>
-          <NavMenuCloseIcon>
-            <span></span>
-            <span></span>
-          </NavMenuCloseIcon>
-          <NavMenuCloseLabel>Close</NavMenuCloseLabel>
-        </NavMenuClose>
+    <BookingMenu $open={open}>
+      <BookMenuOverlay $open={open}></BookMenuOverlay>
+      <BookMenuContainer $open={open}>
+        <span onClick={() => setOpen(false)}>
+          <NavMenuClose>
+            <NavMenuCloseIcon>
+              <span></span>
+              <span></span>
+            </NavMenuCloseIcon>
+            <NavMenuCloseLabel>Close</NavMenuCloseLabel>
+          </NavMenuClose>
+        </span>
         <BookMenuListing>
           <BookMenuListingItem>
             <BookMenuListingImage>
-              <Image src="/assets/LOZ_Hero-image.jpg" alt="" width={0} height={0} sizes="100vw" />
+              <Image
+                src="/assets/LOZ_Hero-image.jpg"
+                alt=""
+                width={0}
+                height={0}
+                sizes="100vw"
+              />
             </BookMenuListingImage>
             <BookMenuListingMain>
               <BookMenuListingBody>
@@ -126,7 +183,13 @@ export const BookMenu = () => {
           </BookMenuListingItem>
           <BookMenuListingItem>
             <BookMenuListingImage>
-              <Image src="/assets/NOSTALGIA_DEF_RGB.jpg" alt="" width={0} height={0} sizes="100vw" />
+              <Image
+                src="/assets/NOSTALGIA_DEF_RGB.jpg"
+                alt=""
+                width={0}
+                height={0}
+                sizes="100vw"
+              />
             </BookMenuListingImage>
             <BookMenuListingMain>
               <BookMenuListingBody>
@@ -143,4 +206,4 @@ export const BookMenu = () => {
       </BookMenuContainer>
     </BookingMenu>
   );
-}
+};

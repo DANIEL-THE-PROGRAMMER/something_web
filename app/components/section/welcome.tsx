@@ -22,6 +22,7 @@ import {
   ConnectWithupDiv,
   ConnectH3,
   ConnectSociallinks,
+  WordText,
 } from "@/app/styles";
 import Image from "next/image";
 
@@ -30,33 +31,33 @@ export const Welcome = () => {
     <div>
       <WordBox>
         <WordPara>
-          <Word>Welcome</Word>
+          <WordText index={0}>Welcome</WordText>
           <Whitespace> </Whitespace>
-          <Word>to</Word>
+          <WordText index={0}>to</WordText>
           <Whitespace> </Whitespace>
-          <Word>Somewhere.</Word>
+          <WordText index={0}>Somewhere.</WordText>
         </WordPara>
         <WordPara>
-          <Word>A</Word>
+          <WordText index={1}>A</WordText>
           <Whitespace> </Whitespace>
-          <Word>Cocktail</Word>
+          <WordText index={1}>Cocktail</WordText>
           <Whitespace> </Whitespace>
-          <Word>bar</Word>
+          <WordText index={1}>bar</WordText>
           <Whitespace> </Whitespace>
-          <Word>and</Word>
+          <WordText index={1}>and</WordText>
           <Whitespace> </Whitespace>
-          <Word>experience.</Word>
+          <WordText index={1}>experience.</WordText>
         </WordPara>
         <WordPara>
-          <Word>A</Word>
+          <WordText index={2}>A</WordText>
           <Whitespace> </Whitespace>
-          <Word>portal</Word>
+          <WordText index={2}>portal</WordText>
           <Whitespace> </Whitespace>
-          <Word>to</Word>
+          <WordText index={2}>to</WordText>
           <Whitespace> </Whitespace>
-          <Word>the</Word>
+          <WordText index={2}>the</WordText>
           <Whitespace> </Whitespace>
-          <Word>extraordinary.</Word>
+          <WordText index={2}>extraordinary.</WordText>
         </WordPara>
         <Wordbtn>Book Now</Wordbtn>
       </WordBox>
@@ -149,9 +150,7 @@ export const Welcome = () => {
         <ConnectWithUsInner>
           <ConnectWithupDiv>
             <ConnectH3>Connect</ConnectH3>
-            <ConnectSociallinks>
-              
-            </ConnectSociallinks>
+            <ConnectSociallinks></ConnectSociallinks>
           </ConnectWithupDiv>
         </ConnectWithUsInner>
       </ConnectWithus>
