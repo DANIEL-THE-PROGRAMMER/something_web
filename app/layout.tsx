@@ -6,6 +6,8 @@ import { Footer } from "./components/view/footer";
 import { NavMenu, BookMenu } from "./components/nav_bookmenu";
 import { Nav } from "./components/view/nav";
 import { SmoothScrollbar } from "./components/smoothscrollbar";
+import { Loader } from "./components/loader";
+import LoadingContextProvider from "./context/loadingcontext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,13 +24,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SmoothScrollbar>
-          <StyledComponentsRegistry>
-            <Nav />
-            {children}
-            <Footer />
-          </StyledComponentsRegistry>
-        </SmoothScrollbar>
+        <LoadingContextProvider>
+          <SmoothScrollbar>
+            <StyledComponentsRegistry>
+              <Loader />
+              <Nav />
+              {children}
+              <Footer />
+            </StyledComponentsRegistry>
+          </SmoothScrollbar>
+        </LoadingContextProvider>
       </body>
     </html>
   );

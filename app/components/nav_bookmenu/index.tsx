@@ -29,6 +29,7 @@ import {
   BookingBtn,
 } from "./style";
 import { Dispatch, SetStateAction, useState } from "react";
+import { CustomLink } from "../customlink";
 
 export const NavMenu = ({
   open,
@@ -74,14 +75,17 @@ export const NavMenu = ({
                 {Links.map(
                   (link: { href: string; name: string }, index: number) => {
                     return (
-                      <Link
+                      <a
                         key={index}
-                        href={`/${link.href}`}
                         onMouseEnter={() => setActive(index)}
                         onMouseLeave={() => setActive(null)}
                       >
-                        <span>{link.name}</span>
-                      </Link>
+                         <CustomLink
+                          name={link.name}
+                          href={`/${link.href}`}
+                          setOpen={setOpen}
+                        />
+                      </a>
                     );
                   }
                 )}

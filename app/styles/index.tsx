@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useLoading } from "../context/loadingcontext";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export const MenuHeader = styled.div`
@@ -176,8 +177,12 @@ export const Whitespace = styled.span`
 `;
 
 export const HeaderTextSplit = (props: any) => {
+
+  const {loading } = useLoading()
+
   useEffect(() => {
     let e = gsap.timeline();
+    if(loading) return 
     e.to(".smokeText span", {
       opacity: 1,
       scale: 1,
@@ -189,7 +194,7 @@ export const HeaderTextSplit = (props: any) => {
         from: "random",
       },
     });
-  }, []);
+  }, [loading]);
 
   return (
     <span className="smokeText">

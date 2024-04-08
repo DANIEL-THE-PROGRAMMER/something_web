@@ -151,6 +151,7 @@ export const NavMenuPrimaryNav = styled.div`
     visibility: visible;
     transition: opacity 0.3s ease;
     text-decoration: none;
+    cursor:pointer;
   }
 `;
 

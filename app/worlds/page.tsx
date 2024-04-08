@@ -17,27 +17,14 @@ import Image from "next/image";
 import { HeroContainer, HeroMain, H1 } from "./styles";
 import { WordListingContainer, WordListingItem, WordListing } from "./styles";
 import { Gallery } from "../components/section/gallery";
+import { HeroImage } from "../components/heroimage";
 
 
 export default function Worlds ()  {
   return (
     <>
       <Header>
-        <Image
-          src="/assets/our-worlds-hero2jpg.jpg"
-          width={0}
-          height={0}
-          alt="home hero"
-          style={{
-            objectFit: "cover",
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            top: 0,
-            left: 0,
-          }}
-          sizes="100vw"
-        />
+        <HeroImage image="/assets/our-worlds-hero2jpg.jpg" />
         <HeroContainer>
           <HeroMain>
             <H1>

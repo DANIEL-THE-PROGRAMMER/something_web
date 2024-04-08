@@ -4,6 +4,7 @@ import { MenuBtnLabel, BookBtn, MenuBox, MenuBtnIcon } from "@/app/styles";
 import { Logo } from "@/app/icon";
 import { BookMenu, NavMenu } from "../nav_bookmenu";
 import { useState } from "react";
+import Link from "next/link";
 
 export const Nav = () => {
 
@@ -27,7 +28,10 @@ export const Nav = () => {
             </MenuBox>
           </span>
         </div>
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
+
         <div className="menuflex2">
           <BookBtn>
             <div onClick={() => setOpenBk(true)}>Make a booking</div>
