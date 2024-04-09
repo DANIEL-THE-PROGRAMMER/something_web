@@ -29,7 +29,7 @@ export const Nav = () => {
           </span>
         </div>
         <Link href="/">
-          <Logo />
+          <Logo href={`/`}  />
         </Link>
 
         <div className="menuflex2">

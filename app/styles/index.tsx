@@ -104,7 +104,7 @@ export const HeroContainer = (props: any) => {
   useEffect(() => {
     const hero_container = document.querySelector(".hero_container");
     const parent = hero_container?.parentElement;
-    console.log(parent);
+  
     gsap.to("hero_container div", {
       yPercent: 25,
       ease: "none",

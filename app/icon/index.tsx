@@ -1,6 +1,29 @@
-export const Logo = () => {
+"use client";
+
+import { Sleep } from "../lib/helpers";
+import { usePathname, useRouter } from "next/navigation";
+import { useLoading } from "../context/loadingcontext";
+
+export const Logo = ({ href }: { href: string 
+}) => {
+  const pathname = usePathname();
+  const router = useRouter();
+
+
+  const { loading, isLoading } = useLoading()
+
+  const handleClick = async () => {
+    await Sleep(1000);
+    if (href === pathname) return;
+    router.push(href);
+  };
+
   return (
     <div
+      onClick={() => {
+        isLoading(true);
+        handleClick()
+      }}
       style={{
         display: "block",
         height: "clamp(34px, 0.5vw + 32px, 44px)",
@@ -173,5 +196,3 @@ export const FooterLogo = () => {
     </svg>
   );
 };
-
-

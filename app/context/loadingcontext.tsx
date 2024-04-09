@@ -24,7 +24,7 @@ export const LoadingContext = createContext<{
 });
 
 const LoadingContextProvider = (props: { children: React.ReactNode }) => {
-  const [loading, isLoading] = useState(true);
+  const [loading, isLoading] = useState(false);
 
 
   return (
