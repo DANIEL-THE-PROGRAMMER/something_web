@@ -24,14 +24,15 @@ export const CustomLink = ({
 
   const handleClick = async () => {
     await Sleep(1000)
+    console.log(href, pathname)
     if(href === pathname) return 
+    isLoading(true);
     router.push(href)
   }
 
   return (
     <span
       onClick={() => {
-        isLoading(true);
         setOpen(false);
         handleClick()
       }}

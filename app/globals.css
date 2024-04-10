@@ -72,5 +72,22 @@ button {
   top: 0;
   width: 100%;
   height: 100%;
-  background:#000612;
+  background: #000612;
+}
+
+.gallery__scrollbar {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.gallery__scrollbar .swiper-scrollbar-drag {
+    height: 1px;
+    background: "#e9e9e6";
+}
+.nextbtn {
+  
+}
+
+.prevbtn {
 }
